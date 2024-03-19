@@ -71,8 +71,8 @@ $prefix: (mat, fab-small);
     $container-color: inspection.get-theme-color($theme, $palette-name);
     $contrast-tone: mdc-helpers.variable-safe-contrast-tone($container-color, $is-dark);
     $color: if($contrast-tone == 'dark', #000, #fff);
-    $foreground-color: $color;
-    $state-layer-color: $color;
+    $foreground-color: if(token-utils.$private-is-internal-build, $color, $contrast-color);
+    $state-layer-color: if(token-utils.$private-is-internal-build, $color, $contrast-color);
     $ripple-color: rgba($color, 0.1);
   }
   @else {
